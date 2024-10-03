@@ -76,8 +76,12 @@ onMounted(() => {
   filterBooks();
 });
 
-const showAddForm = () => { isAddFormVisible.value = true; };
-const closeForm = () => { isAddFormVisible.value = false; resetForm(); };
+const showAddForm = () => { 
+  isAddFormVisible.value = true; 
+  };
+const closeForm = () => { 
+  isAddFormVisible.value = false; resetForm(); 
+  };
 const addBook = () => {
   if (isEditing.value) {
     books.value.splice(editingIndex.value, 1, { ...newBook.value });
@@ -100,10 +104,21 @@ const confirmDeleteBook = (index) => {
     alert("Sách đã được xóa");
   }
 };
-const deleteBook = (index) => { books.value.splice(index, 1); saveBooksToLocalStorage(); filterBooks(); };
-const resetForm = () => { newBook.value = { title: '', borrower: '', borrowDate: '', returnDate: '', status: 'Chưa trả' }; };
-const saveBooksToLocalStorage = () => { localStorage.setItem('books', JSON.stringify(books.value)); filterBooks(); };
-const filterBooks = () => { filteredBooks.value = selectedFilter.value ? books.value.filter(book => book.status === selectedFilter.value) : books.value; };
+const deleteBook = (index) => { 
+  books.value.splice(index, 1); 
+  saveBooksToLocalStorage(); 
+  filterBooks(); 
+  };
+const resetForm = () => { 
+  newBook.value = { title: '', borrower: '', borrowDate: '', returnDate: '', status: 'Chưa trả' };
+ };
+const saveBooksToLocalStorage = () => { 
+  localStorage.setItem('books', JSON.stringify(books.value)); 
+  filterBooks(); 
+  };
+const filterBooks = () => { 
+  filteredBooks.value = selectedFilter.value ? books.value.filter(book => book.status === selectedFilter.value) : books.value; 
+  };
 </script>
 
 <style scoped>
